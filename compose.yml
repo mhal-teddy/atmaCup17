@@ -12,6 +12,6 @@ services:
       --port=8888
       --no-browser
       --NotebookApp.token=''
-      --notebook-dir=/notebooks
+      --notebook-dir=/src/notebooks
     tty: true
     stdin_open: true
