@@ -1,0 +1,6 @@
+datasets
+jupyterlab
+matplotlib
+pandas
+scikit-learn
+transformers[torch]
