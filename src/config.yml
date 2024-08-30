@@ -1,0 +1,3 @@
+model_name: "distilbert/distilbert-base-uncased"
+max_length: 192
+seed: 42

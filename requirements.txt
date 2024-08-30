@@ -1,6 +1,10 @@
 datasets
+ipywidgets
 jupyterlab
+lightgbm
 matplotlib
 pandas
+pyyaml
 scikit-learn
+tqdm
 transformers[torch]
