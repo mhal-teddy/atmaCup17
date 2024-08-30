@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 from typing import TypeAlias
 
@@ -8,7 +9,8 @@ def preprocess(df: DATAFRAME, clothing_master: DATAFRAME, is_train: bool = True)
     processed_df["text"] = "title: " + processed_df["Title"].fillna("none") + " [SEP] " + "review: " + processed_df["Review Text"].fillna("none")
     processed_df.drop(["Title", "Review Text"], axis=1, inplace=True)
     if is_train:
-        processed_df.drop("Rating", axis=1, inplace=True)
+        processed_df["labels"] = processed_df["Recommended IND"].astype(np.int8)
+        processed_df.drop(["Rating", "Recommended IND"], axis=1, inplace=True)
     return processed_df
 
 if __name__ == "__main__":
