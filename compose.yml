@@ -4,7 +4,7 @@ services:
     ports:
       - "8888:8888"
     volumes:
-      - .:/src
+      - .:/work
     entrypoint: >
       jupyter-lab
       --allow-root
@@ -12,6 +12,6 @@ services:
       --port=8888
       --no-browser
       --NotebookApp.token=''
-      --notebook-dir=/src/notebooks
+      --notebook-dir=/work/notebooks
     tty: true
     stdin_open: true
