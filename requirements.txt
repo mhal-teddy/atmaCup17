@@ -3,6 +3,8 @@ ipywidgets
 jupyterlab
 lightgbm
 matplotlib
+optuna
+optuna-integration
 pandas
 pyyaml
 scikit-learn
