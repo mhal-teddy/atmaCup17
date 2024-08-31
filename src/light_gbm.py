@@ -1,3 +1,4 @@
+import argparse
 import lightgbm as lgb
 import numpy as np
 import pandas as pd
@@ -69,15 +70,18 @@ def train(train_df: DATAFRAME, test_df: DATAFRAME) -> np.ndarray:
     print(f"CV score: {roc_auc_score(y, oof)}")
     return preds
 
-def main():
-    train_df = pd.read_csv("../data/processed/train.csv")
-    test_df = pd.read_csv("../data/processed/test.csv")
+def main(args: argparse.Namespace):
+    train_df = pd.read_csv(f"../data/{args.dir}/train.csv")
+    test_df = pd.read_csv(f"../data/{args.dir}/test.csv")
     submission_df = pd.read_csv("../data/raw/sample_submission.csv")
 
     train_df, test_df = label_encoding(train_df, test_df)
     preds = train(train_df, test_df)
     submission_df["target"] = preds
-    submission_df.to_csv("../data/processed/submission.csv", header=True, index=False)
+    submission_df.to_csv(f"../data/{args.dir}/submission.csv", header=True, index=False)
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dir", type=str, required=True, help="Directory name")
+    args = parser.parse_args()
+    main(args)
